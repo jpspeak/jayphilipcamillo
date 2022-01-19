@@ -1,8 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nodemailer from "nodemailer"
+import config from '../../config';
+
 type Data = {
-  name: string
+  message: string
 }
 
 export default async function handler(
@@ -14,17 +15,21 @@ export default async function handler(
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: "jayphilipcamillo@gmail.com", // generated ethereal user
-      pass: "Godismysource1", // generated ethereal password
+      user: config.MAILER.USER, // generated ethereal user
+      pass: config.MAILER.PASSWORD, // generated ethereal password
     },
   });
    // send mail with defined transport object
-   let info = await transporter.sendMail({
-    to: "jayphilipcamillo@gmail.com", // list of receivers
-    subject: "MESSAGE FROM YOUR WEBSITE", // Subject line
-    text: `From: ${req.body.fullname} <${req.body.email}> \n\n ${req.body.message}`, // plain text body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  res.status(200).json(req.body)
+   try {
+    await transporter.sendMail({
+      to: config.MAILER.USER, // list of receivers
+      subject: "MESSAGE FROM YOUR WEBSITE", // Subject line
+      text: `From: ${req.body.fullname} <${req.body.email}> \n\n ${req.body.message}`, // plain text body
+    });
+  
+    res.status(200).json({message: 'Email sent'})
+   } catch (error) {
+    res.status(500).json({message: 'Something went wrong'})
+   }
+   
 }

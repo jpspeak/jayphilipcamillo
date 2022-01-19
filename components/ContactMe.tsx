@@ -110,7 +110,7 @@ const ContactMe = () => {
                   <Textarea onChange={handleOnChange} name='message' id='message' placeholder='Write your message' rows={5} required />
                 </FormControl>
                 <Flex justifyContent='end'>
-                  <Button isLoading={true} loadingText='Sending...' size='lg' rounded='full' colorScheme='cyan' color='white' mt='16' type='submit'>
+                  <Button isLoading={isLoading} loadingText='Sending...' size='lg' rounded='full' colorScheme='cyan' color='white' mt='16' type='submit'>
                     Send Message
                   </Button>
                 </Flex>
