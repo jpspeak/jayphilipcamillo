@@ -14,6 +14,7 @@ const RatingBar = ({ percentage, text }: { percentage: number; text: string }) =
     if (barContainerInView) {
       gsap.fromTo(barRef.current, { width: 0 }, { width: `${percentage}%`, duration: 3, ease: "power3.out" });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [barContainerInView]);
   return (
     <Grid ref={barContainerRef} gridTemplateColumns='repeat(2, 1fr)' columnGap={4} width='full'>
