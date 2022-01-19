@@ -1,9 +1,39 @@
-import { Box, Button, Center, Container, Flex, FormControl, FormLabel, Grid, Heading, HStack, Icon, Input, Spacer, Text, Textarea, VStack } from "@chakra-ui/react";
+import { Box, Button, Center, Container, Flex, FormControl, FormLabel, Grid, Heading, HStack, Icon, Input, Spacer, Text, Textarea, useBoolean, VStack } from "@chakra-ui/react";
 import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { SiWhatsapp } from "react-icons/si";
 import { FiFacebook } from "react-icons/fi";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const ContactMe = () => {
+  const [isLoading, setIsLoading] = useBoolean();
+  const [value, setValue] = useState({
+    fullname: "",
+    email: "",
+    message: ""
+  });
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValue(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading.on();
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(value)
+      });
+      setValue({ fullname: "", email: "", message: "" });
+      setIsLoading.off();
+    } catch (error) {
+      console.log(error);
+      setIsLoading.off();
+    }
+  };
+
   return (
     <>
       <Box id='contact-me' min-height='100vh' bgColor='#262626' color='white'>
@@ -66,21 +96,21 @@ const ContactMe = () => {
               </HStack>
             </Box>
             <Box p='8'>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <FormControl>
                   <FormLabel htmlFor='fullname'>Full Name</FormLabel>
-                  <Input id='fullname' placeholder='Enter your full name' />
+                  <Input onChange={handleOnChange} name='fullname' id='fullname' placeholder='Enter your full name' required />
                 </FormControl>
                 <FormControl mt='8'>
                   <FormLabel htmlFor='email'>Email</FormLabel>
-                  <Input id='email' placeholder='Enter your email address' />
+                  <Input onChange={handleOnChange} name='email' id='email' type='email' placeholder='Enter your email address' required />
                 </FormControl>
                 <FormControl mt='8'>
                   <FormLabel htmlFor='message'>Message</FormLabel>
-                  <Textarea id='message' placeholder='Write your message' rows={5} />
+                  <Textarea onChange={handleOnChange} name='message' id='message' placeholder='Write your message' rows={5} required />
                 </FormControl>
                 <Flex justifyContent='end'>
-                  <Button size='lg' colorScheme='cyan' color='white' mt='16'>
+                  <Button isLoading={true} loadingText='Sending...' size='lg' rounded='full' colorScheme='cyan' color='white' mt='16' type='submit'>
                     Send Message
                   </Button>
                 </Flex>
