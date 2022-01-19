@@ -3,9 +3,12 @@ import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-ic
 import { SiWhatsapp } from "react-icons/si";
 import { FiFacebook } from "react-icons/fi";
 import { ChangeEvent, FormEvent, useState } from "react";
+import EmailSentAlert from "./EmailSentAlert";
 
 const ContactMe = () => {
   const [isLoading, setIsLoading] = useBoolean();
+  const [isEmailSent, setIsEmailSent] = useBoolean();
+
   const [value, setValue] = useState({
     fullname: "",
     email: "",
@@ -28,6 +31,7 @@ const ContactMe = () => {
       });
       setValue({ fullname: "", email: "", message: "" });
       setIsLoading.off();
+      setIsEmailSent.on();
     } catch (error) {
       console.log(error);
       setIsLoading.off();
@@ -99,15 +103,15 @@ const ContactMe = () => {
               <form onSubmit={handleSubmit}>
                 <FormControl>
                   <FormLabel htmlFor='fullname'>Full Name</FormLabel>
-                  <Input onChange={handleOnChange} name='fullname' id='fullname' placeholder='Enter your full name' required />
+                  <Input onChange={handleOnChange} name='fullname' value={value.fullname} id='fullname' placeholder='Enter your full name' required />
                 </FormControl>
                 <FormControl mt='8'>
                   <FormLabel htmlFor='email'>Email</FormLabel>
-                  <Input onChange={handleOnChange} name='email' id='email' type='email' placeholder='Enter your email address' required />
+                  <Input onChange={handleOnChange} name='email' value={value.email} id='email' type='email' placeholder='Enter your email address' required />
                 </FormControl>
                 <FormControl mt='8'>
                   <FormLabel htmlFor='message'>Message</FormLabel>
-                  <Textarea onChange={handleOnChange} name='message' id='message' placeholder='Write your message' rows={5} required />
+                  <Textarea onChange={handleOnChange} name='message' value={value.message} id='message' placeholder='Write your message' rows={5} required />
                 </FormControl>
                 <Flex justifyContent='end'>
                   <Button isLoading={isLoading} loadingText='Sending...' size='lg' rounded='full' colorScheme='cyan' color='white' mt='16' type='submit'>
@@ -119,6 +123,7 @@ const ContactMe = () => {
           </Grid>
         </Container>
       </Box>
+      <EmailSentAlert isOpen={isEmailSent} onClose={() => setIsEmailSent.off()} />
     </>
   );
 };
