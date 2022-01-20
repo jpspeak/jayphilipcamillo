@@ -17,7 +17,7 @@ const Home = () => {
     timeline.fromTo(fullnameRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 }, "<70%");
     timeline.fromTo(jobTitleRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 }, "<70%");
     timeline.fromTo(hireMeBtnRef.current, { opacity: 0 }, { opacity: 1, autoAlpha: 1 });
-    timeline.fromTo(handRef.current, { rotation: "40deg", x: 4 }, { rotation: "0deg", x: 0, yoyo: true, repeat: 3, duration: 0.3 });
+    timeline.fromTo(handRef.current, { rotation: "40deg", x: 4 }, { rotation: "0deg", x: 0, yoyo: true, repeat: 5, duration: 0.3 });
   }, []);
 
   return (
