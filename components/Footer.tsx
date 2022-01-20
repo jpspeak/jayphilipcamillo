@@ -9,7 +9,7 @@ const Footer = () => {
         <Container maxW='container.lg' h='full' py='10'>
           <Stack alignItems='center' justifyContent='center' spacing={4}>
             <Image src='/jp.svg' alt='logo' height='50' width='64' />
-            <Text>© Copyright {new Date().getFullYear()}. All right reserved</Text>
+            <Text>© Copyright {new Date().getFullYear()} • All rights reserved</Text>
           </Stack>
         </Container>
       </Box>
