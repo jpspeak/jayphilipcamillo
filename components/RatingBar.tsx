@@ -4,8 +4,8 @@ import { useInView } from "react-intersection-observer";
 import gsap from "gsap";
 const RatingBar = ({ percentage, text }: { percentage: number; text: string }) => {
   const [barContainerRef, barContainerInView] = useInView({
-    threshold: 0.5
-    // triggerOnce: true
+    threshold: 0.5,
+    triggerOnce: true
   });
 
   const barRef = useRef(null);
