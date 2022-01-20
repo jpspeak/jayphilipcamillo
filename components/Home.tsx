@@ -45,7 +45,7 @@ const Home = () => {
                 Full Stack Web Developer
               </Heading>
               <Flex justify={{ base: "center", md: "left" }}>
-                <Button ref={hireMeBtnRef} visibility='hidden' color='white' colorScheme='cyan' mt='10' rounded='full' px='10' size='lg'>
+                <Button ref={hireMeBtnRef} as='a' href='#contact-me' visibility='hidden' color='white' colorScheme='cyan' mt='10' rounded='full' px='10' size='lg'>
                   Hire Me
                 </Button>
               </Flex>
