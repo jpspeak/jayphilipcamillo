@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { Box, Container, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import Image from "next/image";
 
@@ -15,8 +16,8 @@ const MyWork = () => {
                 </Flex>
               </Box>
               <Box px='8' py='4'>
-                <Link href='https://kenneland-client.vercel.app/' target='_blank' fontSize='2xl' fontWeight='bold'>
-                  Kenneland
+                <Link href='https://kenneland-client.vercel.app/' isExternal fontSize='xl' fontWeight='bold'>
+                  Kenneland <ExternalLinkIcon mx='2px' fontSize='lg' mb='1' />
                 </Link>
                 <Text mt='2'>A place for Dog Lovers where you can promote your kennel, follow breeders, find studs and sell your lovely dogs.</Text>
               </Box>
