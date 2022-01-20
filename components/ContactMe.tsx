@@ -4,6 +4,7 @@ import { SiWhatsapp } from "react-icons/si";
 import { FiFacebook } from "react-icons/fi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import EmailSentAlert from "./EmailSentAlert";
+import ContactIconButton from "./ContactIconButton";
 
 const ContactMe = () => {
   const [isLoading, setIsLoading] = useBoolean();
@@ -71,32 +72,8 @@ const ContactMe = () => {
               </VStack>
               <Spacer />
               <HStack justifyContent={{ base: "end", md: "center" }} mt={{ base: "14", md: "0" }} spacing={4}>
-                <Center
-                  as='a'
-                  href='https://web.facebook.com/jayphilipcamillo'
-                  target='_blank'
-                  _hover={{ bgColor: "#0BC5EA", color: "#212121" }}
-                  color='#0BC5EA'
-                  h='60px'
-                  w='60px'
-                  rounded='full'
-                  border='2px solid #0BC5EA'
-                >
-                  <Icon as={FiFacebook} h='6' w='6' />
-                </Center>
-                <Center
-                  as='a'
-                  href='https://wa.me/+639162408252'
-                  target='_blank'
-                  _hover={{ bgColor: "#0BC5EA", color: "#212121" }}
-                  color='#0BC5EA'
-                  h='60px'
-                  w='60px'
-                  rounded='full'
-                  border='2px solid #0BC5EA'
-                >
-                  <Icon as={SiWhatsapp} h='6' w='6' />
-                </Center>
+                <ContactIconButton href='https://web.facebook.com/jayphilipcamillo' icon={FiFacebook} />
+                <ContactIconButton href='https://wa.me/+639162408252' icon={SiWhatsapp} />
               </HStack>
             </Box>
             <Box p='8'>
