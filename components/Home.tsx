@@ -2,6 +2,7 @@ import { Box, Button, Container, Flex, Grid, Heading, Text, HStack } from "@chak
 import Image from "next/image";
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
+import styles from "../styles/HireMeButton.module.css";
 
 const Home = () => {
   const greetingsRef = useRef(null);
@@ -45,8 +46,9 @@ const Home = () => {
                 Full Stack Web Developer
               </Heading>
               <Flex justify={{ base: "center", md: "left" }}>
-                <Button ref={hireMeBtnRef} as='a' href='#contact-me' visibility='hidden' color='white' colorScheme='cyan' mt='10' rounded='full' px='10' size='lg'>
-                  Hire Me
+                <Button ref={hireMeBtnRef} className={styles.hireMeBtn} as='a' href='#contact-me' visibility='hidden' color='white' colorScheme='cyan' mt='24' rounded='full' px='10' size='lg'>
+                  <Box as='span'>Hire me</Box>
+                  <Box className={styles.liquid}></Box>
                 </Button>
               </Flex>
             </Flex>
