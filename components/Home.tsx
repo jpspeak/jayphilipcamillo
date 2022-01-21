@@ -13,11 +13,11 @@ const Home = () => {
 
   useEffect(() => {
     const timeline = gsap.timeline({ defaults: { ease: "slow(0.7, 0.7, false)", duration: 0.75 } });
-    timeline.fromTo(handRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 });
-    timeline.fromTo(greetingsRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 }, "<");
-    timeline.fromTo(fullnameRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 }, "<70%");
-    timeline.fromTo(jobTitleRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1 }, "<70%");
-    timeline.fromTo(hireMeBtnRef.current, { opacity: 0 }, { opacity: 1, autoAlpha: 1 });
+    timeline.fromTo(handRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, visibility: "visible" });
+    timeline.fromTo(greetingsRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, visibility: "visible" }, "<");
+    timeline.fromTo(fullnameRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, visibility: "visible" }, "<70%");
+    timeline.fromTo(jobTitleRef.current, { y: 500, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, visibility: "visible" }, "<70%");
+    timeline.fromTo(hireMeBtnRef.current, { opacity: 0 }, { opacity: 1, visibility: "visible" });
     timeline.fromTo(handRef.current, { rotation: "40deg", x: 4 }, { rotation: "0deg", x: 0, yoyo: true, repeat: 5, duration: 0.3 });
   }, []);
 
@@ -29,7 +29,7 @@ const Home = () => {
             <Box position='relative' height={{ base: "200px", md: "400px" }}>
               <Image src='/man.png' alt='Man' objectFit='contain' layout='fill' />
             </Box>
-            <Flex flexDirection='column' justifyContent='center'>
+            <Flex flexDirection='column' justifyContent='center' visibility='hidden'>
               <HStack position='relative' pl='6'>
                 <Box ref={handRef} as='span' width='max-content' position='absolute' left={0}>
                   👋
