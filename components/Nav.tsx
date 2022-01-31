@@ -17,7 +17,7 @@ const Nav = ({ onClick }: { onClick?: MouseEventHandler<HTMLAnchorElement> }) =>
           Skills
         </Link>
         <Link href='#my-work' onClick={onClick} textAlign='center' color={sectionInView === "my-work" ? "cyan.400" : "inherit"} _hover={{ textDecor: "none" }}>
-          My Work
+          My Works
         </Link>
         <Link href='#contact-me' onClick={onClick} fontSize='sm' textAlign='center' bgColor='cyan.400' color='white' px='4' py='2' rounded='full' _hover={{ textDecor: "none", bgColor: "cyan.700" }}>
           Contact Me
