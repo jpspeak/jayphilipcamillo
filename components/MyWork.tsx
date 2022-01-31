@@ -23,6 +23,21 @@ const MyWork = () => {
               </Box>
             </Box>
           </Flex>
+          <Flex justifyContent='center' mt='4'>
+            <Box maxWidth='600' width='full' bgColor='#363636' rounded='lg' overflow='hidden'>
+              <Box pb='75%' bgColor='gray.500' width='full' position='relative'>
+                <Flex position='absolute'>
+                  <Image src='/pizzapp_thumbnail.png' alt='kenneland_thumb' objectFit='cover' height={900} width={1200} />
+                </Flex>
+              </Box>
+              <Box px='8' py='4'>
+                <Link href='https://pizzapp-b8f65.web.app/' isExternal fontSize='xl' fontWeight='bold'>
+                  Pizzapp <ExternalLinkIcon mx='2px' fontSize='lg' mb='1' />
+                </Link>
+                <Text mt='2'>Pizza delivery web application.</Text>
+              </Box>
+            </Box>
+          </Flex>
         </Container>
       </Box>
     </>
